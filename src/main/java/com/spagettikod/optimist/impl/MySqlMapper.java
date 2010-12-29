@@ -16,14 +16,13 @@
  *
  */
 
-package com.spagettikod.optimist.mapper;
+package com.spagettikod.optimist.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.spagettikod.optimist.EntityWrapper;
 
 /**
  * @author Roland Bali
