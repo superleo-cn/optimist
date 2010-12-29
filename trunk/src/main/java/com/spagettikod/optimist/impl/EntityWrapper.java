@@ -16,13 +16,17 @@
  *
  */
 
-package com.spagettikod.optimist;
+package com.spagettikod.optimist.impl;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.spagettikod.optimist.Identity;
+import com.spagettikod.optimist.OptimisticLocking;
+import com.spagettikod.optimist.Version;
 
 /**
  * Wrapper class used internally by Optimist to manage objects using optimistic
@@ -65,19 +69,19 @@ public class EntityWrapper {
 		validateAndExtractAnnotations();
 	}
 
-	public String getTableName() {
+	String getTableName() {
 		return tableName;
 	}
 
-	public String getIdentityColumnName() {
+	String getIdentityColumnName() {
 		return identityColumnName;
 	}
 
-	public String getVersionColumnName() {
+	String getVersionColumnName() {
 		return versionColumnName;
 	}
 
-	public void setIdentity(Object identity) {
+	void setIdentity(Object identity) {
 		boolean accessChanged = false;
 		if (!identityField.isAccessible()) {
 			identityField.setAccessible(true);
@@ -106,7 +110,7 @@ public class EntityWrapper {
 	/**
 	 * Updates the version field when update occur.
 	 */
-	public void incrementVersion() {
+	void incrementVersion() {
 		boolean accessChanged = false;
 		if (!versionField.isAccessible()) {
 			versionField.setAccessible(true);
@@ -141,7 +145,7 @@ public class EntityWrapper {
 		}
 	}
 
-	public void initVersion() {
+	void initVersion() {
 		boolean accessChanged = false;
 		if (!versionField.isAccessible()) {
 			versionField.setAccessible(true);
@@ -164,7 +168,7 @@ public class EntityWrapper {
 		}
 	}
 
-	public Object getVersion() {
+	Object getVersion() {
 		boolean accessChanged = false;
 		if (!versionField.isAccessible()) {
 			versionField.setAccessible(true);
@@ -184,7 +188,7 @@ public class EntityWrapper {
 		return null;
 	}
 
-	public Object getIdentity() {
+	Object getIdentity() {
 		boolean accessChanged = false;
 		if (!identityField.isAccessible()) {
 			identityField.setAccessible(true);
@@ -204,7 +208,7 @@ public class EntityWrapper {
 		return null;
 	}
 
-	public boolean isStale(Object currentVersion) {
+	boolean isStale(Object currentVersion) {
 		Long thisVersion = null;
 		Long currentValueLong = null;
 

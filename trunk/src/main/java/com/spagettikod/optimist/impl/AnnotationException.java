@@ -16,10 +16,10 @@
  *
  */
 
-package com.spagettikod.optimist;
+package com.spagettikod.optimist.impl;
 
 /**
- * Thrown when annotations are used incorrectly or are missing.
+ * Thrown when annotations are missing where expected or used incorrectly.
  * 
  * @author Roland Bali
  * 
