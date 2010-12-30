@@ -21,8 +21,8 @@
 	</issueManagement>
 	<inceptionYear>2010</inceptionYear>
 	<scm>
-		<connection>http://optimist.googlecode.com/svn</connection>
-		<developerConnection>https://optimist.googlecode.com/svn</developerConnection>
+		<connection>scm:svn:http://optimist.googlecode.com/svn</connection>
+		<developerConnection>scm:svn:https://optimist.googlecode.com/svn</developerConnection>
 		<tag>HEAD</tag>
 		<url>http://code.google.com/p/optimist/source/browse/</url>
 	</scm>
