@@ -15,7 +15,17 @@
 	</properties>
 
 	<description>Provides optimistic locking support for MyBatis (also known as iBatis).</description>
+	<issueManagement>
+		<system>Project Hosting on Google Code</system>
+		<url>http://code.google.com/p/optimist/issues/list</url>
+	</issueManagement>
 	<inceptionYear>2010</inceptionYear>
+	<scm>
+		<connection>http://optimist.googlecode.com/svn</connection>
+		<developerConnection>https://optimist.googlecode.com/svn</developerConnection>
+		<tag>HEAD</tag>
+		<url>http://code.google.com/p/optimist/source/browse/</url>
+	</scm>
 	<organization>
 		<name>Spagettikod | Stockholm</name>
 	</organization>
