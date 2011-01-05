@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import com.spagettikod.optimist.Identity;
 import com.spagettikod.optimist.OptimisticLocking;
 import com.spagettikod.optimist.Version;
-import com.spagettikod.optimist.impl.EntityWrapper;
 
 public class EntityWrapperTest {
 
@@ -159,11 +158,12 @@ public class EntityWrapperTest {
 		new EntityWrapper(obj);
 	}
 
-//	@Test(expected = AnnotationException.class)
-//	public void constructor_MultipleIdentityAnnotation() {
-//		MockEntityWithMultipleIdentityAnnotation obj = new MockEntityWithMultipleIdentityAnnotation();
-//		new EntityWrapper(obj);
-//	}
+	// @Test(expected = AnnotationException.class)
+	// public void constructor_MultipleIdentityAnnotation() {
+	// MockEntityWithMultipleIdentityAnnotation obj = new
+	// MockEntityWithMultipleIdentityAnnotation();
+	// new EntityWrapper(obj);
+	// }
 
 	@Test(expected = AnnotationException.class)
 	public void constructor_MockEntityWithWrongIdentityType() {
@@ -193,11 +193,12 @@ public class EntityWrapperTest {
 		new EntityWrapper(obj);
 	}
 
-//	@Test(expected = AnnotationException.class)
-//	public void constructor_MockEntityWithMultipleVersionAnnotation() {
-//		MockEntityWithMultipleVersionAnnotation obj = new MockEntityWithMultipleVersionAnnotation();
-//		new EntityWrapper(obj);
-//	}
+	// @Test(expected = AnnotationException.class)
+	// public void constructor_MockEntityWithMultipleVersionAnnotation() {
+	// MockEntityWithMultipleVersionAnnotation obj = new
+	// MockEntityWithMultipleVersionAnnotation();
+	// new EntityWrapper(obj);
+	// }
 
 	//
 	// Test constructor with a valid object
@@ -232,6 +233,7 @@ public class EntityWrapperTest {
 		assertEquals(true, EntityWrapper.hasOptimisticLockingAnnotation(obj));
 		MockEntityWithoutOptimisticLockingAnnotation obj2 = new MockEntityWithoutOptimisticLockingAnnotation();
 		assertEquals(false, EntityWrapper.hasOptimisticLockingAnnotation(obj2));
+		assertEquals(false, EntityWrapper.hasOptimisticLockingAnnotation(null));
 	}
 
 	//
