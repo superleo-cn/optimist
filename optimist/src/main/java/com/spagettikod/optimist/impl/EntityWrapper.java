@@ -57,6 +57,8 @@ public class EntityWrapper {
 	private Field versionField = null;
 
 	static boolean hasOptimisticLockingAnnotation(Object entityObject) {
+		if (entityObject == null)
+			return false;
 		return entityObject.getClass().isAnnotationPresent(
 				OptimisticLocking.class);
 	}
