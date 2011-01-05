@@ -57,8 +57,11 @@ public class EntityWrapper {
 	private Field versionField = null;
 
 	static boolean hasOptimisticLockingAnnotation(Object entityObject) {
-		if (entityObject == null)
+		if (entityObject == null) {
+			Logger log = LoggerFactory.getLogger(EntityWrapper.class);
+			log.debug("Object is null, can not check for OptimisticLocking annotation!");
 			return false;
+		}
 		return entityObject.getClass().isAnnotationPresent(
 				OptimisticLocking.class);
 	}
