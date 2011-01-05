@@ -16,7 +16,7 @@ public abstract class MyBatisTestUtil {
 			System.out.print("Configuring MyBatis...");
 			Reader reader = Resources
 					.getResourceAsReader("Configuration.xml");
-			factory = new SqlSessionFactoryBuilder().build(reader, "test");
+			factory = new SqlSessionFactoryBuilder().build(reader, "mysql");
 			System.out.println("done!");
 		} catch (Exception e) {
 			System.out.println("failed!");
