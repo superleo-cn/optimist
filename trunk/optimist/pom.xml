@@ -16,7 +16,7 @@
 
 	<description>Provides optimistic locking support for MyBatis (also known as iBatis).</description>
 	<issueManagement>
-		<system>Project Hosting on Google Code</system>
+		<system>Project Hosting at Google Code</system>
 		<url>http://code.google.com/p/optimist/issues/list</url>
 	</issueManagement>
 	<inceptionYear>2010</inceptionYear>
