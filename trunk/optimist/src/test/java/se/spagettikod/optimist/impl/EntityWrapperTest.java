@@ -1,4 +1,4 @@
-package com.spagettikod.optimist.impl;
+package se.spagettikod.optimist.impl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,9 +6,12 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.spagettikod.optimist.Identity;
-import com.spagettikod.optimist.OptimisticLocking;
-import com.spagettikod.optimist.Version;
+import se.spagettikod.optimist.Identity;
+import se.spagettikod.optimist.OptimisticLocking;
+import se.spagettikod.optimist.Version;
+import se.spagettikod.optimist.impl.AnnotationException;
+import se.spagettikod.optimist.impl.EntityWrapper;
+
 
 public class EntityWrapperTest {
 

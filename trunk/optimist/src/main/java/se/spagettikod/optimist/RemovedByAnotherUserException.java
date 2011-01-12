@@ -16,7 +16,7 @@
  *
  */
 
-package com.spagettikod.optimist;
+package se.spagettikod.optimist;
 
 /**
  * Thrown when object being updated no longer exist.

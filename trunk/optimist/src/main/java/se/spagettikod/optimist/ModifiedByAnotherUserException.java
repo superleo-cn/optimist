@@ -16,7 +16,7 @@
  *
  */
 
-package com.spagettikod.optimist;
+package se.spagettikod.optimist;
 
 /**
  * Thrown when the object being updated or deleted has been modified since it

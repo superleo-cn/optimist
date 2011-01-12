@@ -4,8 +4,8 @@
 	"http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
 <configuration>
 	<plugins>
-		<plugin interceptor="com.spagettikod.optimist.impl.OptimisticLockingInterceptor">
-			<!-- <property name="mapper" value="com.spagettikod.optimist.mapper.MySqlMapper" />-->
+		<plugin interceptor="se.spagettikod.optimist.impl.OptimisticLockingInterceptor">
+			<!-- <property name="mapper" value="se.spagettikod.optimist.mapper.MySqlMapper" />-->
 		</plugin>
 	</plugins>
 	<environments default="mysql">

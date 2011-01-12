@@ -1,6 +1,6 @@
-package com.spagettikod.optimist.testutil.mockups;
+package se.spagettikod.optimist.testutil.mockups;
 
-import com.spagettikod.optimist.OptimisticLocking;
+import se.spagettikod.optimist.OptimisticLocking;
 
 @OptimisticLocking("inherited_entity")
 public class InheritedEntity extends Entity {

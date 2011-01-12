@@ -16,7 +16,7 @@
  *
  */
 
-package com.spagettikod.optimist;
+package se.spagettikod.optimist;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
