@@ -6,7 +6,7 @@ using MyBatis for Java.
 <h3>Requirements</h3>
 <ul>
 <li>MyBatis for Java 3</li>
-<li>MySQL 5.0 or 5.1</li>
+<li>MySQL 5.x</li>
 <li>Entity classes using either Long or Integer as keys</li>
 <li>During insert, update or delete the entity class needs to be the parameter to the SQL map</li>
 </ul>
@@ -37,7 +37,7 @@ using MyBatis for Java.
    }
 	</pre>
 	</li>
-	<li>Make sure the entity object is the parameter sent into the mapped statements
+	<li>Make sure the entity object is the parameter sent into the mapped statements where optimistic locking is to be used (INSERT, UPDATE, DELETE)
 	<pre>
    <span style="color: green;">&lt;insert</span> <span style="color: purple;">id</span>=<span style="color: blue;">"insertEntity"</span> <span style="color: purple;">parameterType</span>=<span style="color: blue;">"MyEntity"</span> <span style="color: purple;">useGeneratedKeys</span>=<span style="color: blue;">"true"</span> <span style="color: purple;">keyProperty</span>=<span style="color: blue;">"id"</span><span style="color: green;">&gt;</span>
       INSERT INTO entity (
