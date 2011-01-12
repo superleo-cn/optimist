@@ -1,4 +1,4 @@
-package com.spagettikod.optimist.testutil;
+package se.spagettikod.optimist.testutil;
 
 import java.io.Reader;
 

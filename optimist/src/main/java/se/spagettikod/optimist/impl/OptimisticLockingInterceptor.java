@@ -16,7 +16,7 @@
  *
  */
 
-package com.spagettikod.optimist.impl;
+package se.spagettikod.optimist.impl;
 
 import java.sql.Connection;
 import java.util.Properties;
@@ -32,9 +32,10 @@ import org.apache.ibatis.plugin.Signature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.spagettikod.optimist.ModifiedByAnotherUserException;
-import com.spagettikod.optimist.OptimisticLocking;
-import com.spagettikod.optimist.RemovedByAnotherUserException;
+import se.spagettikod.optimist.ModifiedByAnotherUserException;
+import se.spagettikod.optimist.OptimisticLocking;
+import se.spagettikod.optimist.RemovedByAnotherUserException;
+
 
 /**
  * Plug in to intercept inserts, updates and deletes for objects implementing

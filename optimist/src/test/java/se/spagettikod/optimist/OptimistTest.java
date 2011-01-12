@@ -1,4 +1,4 @@
-package com.spagettikod.optimist;
+package se.spagettikod.optimist;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,9 +11,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.spagettikod.optimist.testutil.MyBatisTestUtil;
-import com.spagettikod.optimist.testutil.mockups.Entity;
-import com.spagettikod.optimist.testutil.mockups.EntityMapper;
+import se.spagettikod.optimist.ModifiedByAnotherUserException;
+import se.spagettikod.optimist.RemovedByAnotherUserException;
+import se.spagettikod.optimist.testutil.MyBatisTestUtil;
+import se.spagettikod.optimist.testutil.mockups.Entity;
+import se.spagettikod.optimist.testutil.mockups.EntityMapper;
+
 
 public class OptimistTest {
 
@@ -102,7 +105,7 @@ public class OptimistTest {
 		Assert.assertEquals(new Integer(1), entity.getVersion());
 	}
 
-	@Test(expected = com.spagettikod.optimist.ModifiedByAnotherUserException.class)
+	@Test(expected = se.spagettikod.optimist.ModifiedByAnotherUserException.class)
 	public void modifiedByAnotherUser() {
 		SqlSession firstSession = MyBatisTestUtil.getSession();
 		Entity entity = new Entity();
@@ -144,7 +147,7 @@ public class OptimistTest {
 		}
 	}
 
-	@Test(expected = com.spagettikod.optimist.ModifiedByAnotherUserException.class)
+	@Test(expected = se.spagettikod.optimist.ModifiedByAnotherUserException.class)
 	public void modifiedByAnotherUserDuringDelete() {
 		SqlSession firstSession = MyBatisTestUtil.getSession();
 		Entity entity = new Entity();
@@ -186,7 +189,7 @@ public class OptimistTest {
 		}
 	}
 
-	@Test(expected = com.spagettikod.optimist.RemovedByAnotherUserException.class)
+	@Test(expected = se.spagettikod.optimist.RemovedByAnotherUserException.class)
 	public void removedByAnotherUser() {
 		SqlSession firstSession = MyBatisTestUtil.getSession();
 		Entity entity = new Entity();
@@ -226,7 +229,7 @@ public class OptimistTest {
 		}
 	}
 
-	@Test(expected = com.spagettikod.optimist.RemovedByAnotherUserException.class)
+	@Test(expected = se.spagettikod.optimist.RemovedByAnotherUserException.class)
 	public void removedByAnotherUserDuringDelete() {
 		SqlSession firstSession = MyBatisTestUtil.getSession();
 		Entity entity = new Entity();

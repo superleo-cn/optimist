@@ -1,8 +1,8 @@
-package com.spagettikod.optimist.testutil.mockups;
+package se.spagettikod.optimist.testutil.mockups;
 
-import com.spagettikod.optimist.Identity;
-import com.spagettikod.optimist.OptimisticLocking;
-import com.spagettikod.optimist.Version;
+import se.spagettikod.optimist.Identity;
+import se.spagettikod.optimist.OptimisticLocking;
+import se.spagettikod.optimist.Version;
 
 @OptimisticLocking("entity")
 public class Entity {

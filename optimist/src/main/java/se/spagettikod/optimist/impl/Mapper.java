@@ -16,7 +16,7 @@
  *
  */
 
-package com.spagettikod.optimist.impl;
+package se.spagettikod.optimist.impl;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -16,7 +16,7 @@
  *
  */
 
-package com.spagettikod.optimist.impl;
+package se.spagettikod.optimist.impl;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -24,9 +24,10 @@ import java.lang.reflect.Field;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.spagettikod.optimist.Identity;
-import com.spagettikod.optimist.OptimisticLocking;
-import com.spagettikod.optimist.Version;
+import se.spagettikod.optimist.Identity;
+import se.spagettikod.optimist.OptimisticLocking;
+import se.spagettikod.optimist.Version;
+
 
 /**
  * Wrapper class used internally by Optimist to manage objects using optimistic

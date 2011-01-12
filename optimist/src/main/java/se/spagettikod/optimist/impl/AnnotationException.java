@@ -16,7 +16,7 @@
  *
  */
 
-package com.spagettikod.optimist.impl;
+package se.spagettikod.optimist.impl;
 
 /**
  * Thrown when annotations are missing where expected or used incorrectly.

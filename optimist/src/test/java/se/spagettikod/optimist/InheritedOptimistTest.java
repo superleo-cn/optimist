@@ -1,4 +1,4 @@
-package com.spagettikod.optimist;
+package se.spagettikod.optimist;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,9 +11,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.spagettikod.optimist.testutil.MyBatisTestUtil;
-import com.spagettikod.optimist.testutil.mockups.InheritedEntity;
-import com.spagettikod.optimist.testutil.mockups.InheritedEntityMapper;
+import se.spagettikod.optimist.ModifiedByAnotherUserException;
+import se.spagettikod.optimist.RemovedByAnotherUserException;
+import se.spagettikod.optimist.testutil.MyBatisTestUtil;
+import se.spagettikod.optimist.testutil.mockups.InheritedEntity;
+import se.spagettikod.optimist.testutil.mockups.InheritedEntityMapper;
+
 
 public class InheritedOptimistTest {
 
@@ -109,7 +112,7 @@ public class InheritedOptimistTest {
 		Assert.assertEquals(new Integer(1), entity.getVersion());
 	}
 
-	@Test(expected = com.spagettikod.optimist.ModifiedByAnotherUserException.class)
+	@Test(expected = se.spagettikod.optimist.ModifiedByAnotherUserException.class)
 	public void modifiedByAnotherUser() {
 		SqlSession firstSession = MyBatisTestUtil.getSession();
 		InheritedEntity entity = new InheritedEntity();
@@ -155,7 +158,7 @@ public class InheritedOptimistTest {
 		}
 	}
 
-	@Test(expected = com.spagettikod.optimist.ModifiedByAnotherUserException.class)
+	@Test(expected = se.spagettikod.optimist.ModifiedByAnotherUserException.class)
 	public void modifiedByAnotherUserDuringDelete() {
 		SqlSession firstSession = MyBatisTestUtil.getSession();
 		InheritedEntity entity = new InheritedEntity();
@@ -201,7 +204,7 @@ public class InheritedOptimistTest {
 		}
 	}
 
-	@Test(expected = com.spagettikod.optimist.RemovedByAnotherUserException.class)
+	@Test(expected = se.spagettikod.optimist.RemovedByAnotherUserException.class)
 	public void removedByAnotherUser() {
 		SqlSession firstSession = MyBatisTestUtil.getSession();
 		InheritedEntity entity = new InheritedEntity();
@@ -243,7 +246,7 @@ public class InheritedOptimistTest {
 		}
 	}
 
-	@Test(expected = com.spagettikod.optimist.RemovedByAnotherUserException.class)
+	@Test(expected = se.spagettikod.optimist.RemovedByAnotherUserException.class)
 	public void removedByAnotherUserDuringDelete() {
 		SqlSession firstSession = MyBatisTestUtil.getSession();
 		InheritedEntity entity = new InheritedEntity();

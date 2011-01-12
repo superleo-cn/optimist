@@ -1,4 +1,4 @@
-package com.spagettikod.optimist.testutil.mockups;
+package se.spagettikod.optimist.testutil.mockups;
 
 public interface InheritedEntityMapper {
 
