@@ -30,6 +30,14 @@
 	<organization>
 		<name>Spagettikod | Stockholm</name>
 	</organization>
+	<developers>
+		<developer>
+			<id>roland.bali@gmail.com</id>
+			<email>roland.bali@gmail.com</email>
+			<name>Roland Bali</name>
+			<organization>Spagettikod | Stockholm</organization>
+		</developer>
+	</developers>
 
 	<licenses>
 		<license>
