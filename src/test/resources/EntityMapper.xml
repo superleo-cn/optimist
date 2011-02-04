@@ -31,7 +31,11 @@
 		WHERE id = #{id}
 	</update>
 	
-	<delete id="deleteEntity">
+	<delete id="deleteEntity" parameterType="se.spagettikod.optimist.testutil.mockups.Entity">
 		DELETE FROM entity WHERE id = #{id}
+	</delete>
+	
+	<delete id="deleteAll">
+		DELETE FROM entity
 	</delete>
 </mapper>

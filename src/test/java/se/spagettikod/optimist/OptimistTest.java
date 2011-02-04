@@ -11,12 +11,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.spagettikod.optimist.ModifiedByAnotherUserException;
-import se.spagettikod.optimist.RemovedByAnotherUserException;
 import se.spagettikod.optimist.testutil.MyBatisTestUtil;
 import se.spagettikod.optimist.testutil.mockups.Entity;
 import se.spagettikod.optimist.testutil.mockups.EntityMapper;
-
 
 public class OptimistTest {
 
@@ -265,6 +262,22 @@ public class OptimistTest {
 			if (secondSession != null) {
 				secondSession.close();
 			}
+		}
+	}
+
+	@Test
+	public void noParameterMApperMethod() {
+		SqlSession session = MyBatisTestUtil.getSession();
+		EntityMapper mapper = session.getMapper(EntityMapper.class);
+		try {
+			mapper.deleteAll();
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.assertTrue(false);
+			session.rollback();
+		} finally {
+			session.close();
 		}
 	}
 }
