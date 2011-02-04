@@ -36,7 +36,6 @@ import se.spagettikod.optimist.ModifiedByAnotherUserException;
 import se.spagettikod.optimist.OptimisticLocking;
 import se.spagettikod.optimist.RemovedByAnotherUserException;
 
-
 /**
  * Plug in to intercept inserts, updates and deletes for objects implementing
  * {@link OptimisticLocking} interface. When updating or deleting it tries to
@@ -157,9 +156,13 @@ public class OptimisticLockingInterceptor implements Interceptor {
 			} else if (ms.getSqlCommandType() == SqlCommandType.DELETE
 					|| ms.getSqlCommandType() == SqlCommandType.INSERT
 					|| ms.getSqlCommandType() == SqlCommandType.UPDATE) {
-				log.debug("Optimistic locking can not be applied! Parameter type '"
-						+ obj.getClass().getName()
-						+ "' does not have the annotation @OptimisticLocking.");
+				if (obj == null) {
+					log.debug("Optimistic locking can not be applied! Parameter is null.");
+				} else {
+					log.debug("Optimistic locking can not be applied! Parameter type '"
+							+ obj.getClass().getName()
+							+ "' does not have the annotation @OptimisticLocking.");
+				}
 			}
 		}
 		return invocation.proceed();
@@ -172,7 +175,7 @@ public class OptimisticLockingInterceptor implements Interceptor {
 
 	@Override
 	public void setProperties(Properties arg0) {
-		if (arg0.getProperty("mapper") != null) {
+		if (arg0 != null && arg0.getProperty("mapper") != null) {
 			log.info("Found mapper property, using class: "
 					+ arg0.getProperty("mapper"));
 			mapper = Mapper.getMapper(arg0.getProperty("mapper"));
