@@ -28,7 +28,6 @@ import se.spagettikod.optimist.Identity;
 import se.spagettikod.optimist.OptimisticLocking;
 import se.spagettikod.optimist.Version;
 
-
 /**
  * Wrapper class used internally by Optimist to manage objects using optimistic
  * locking. When the interceptor detects actions such as update, insert or
@@ -222,6 +221,9 @@ public class EntityWrapper {
 			thisVersion = new Long((Integer) getVersion());
 		} else if (isVersionLong()) {
 			thisVersion = (Long) getVersion();
+		} else if (versionField != null) {
+			log.warn("Version type is neither Long or Integer: "
+					+ versionField.getType());
 		}
 
 		if (currentVersion instanceof Long) {
@@ -233,6 +235,12 @@ public class EntityWrapper {
 					"Version value type '"
 							+ currentVersion.getClass().getName()
 							+ "' is neither java.lang.Long or java.lang.Integer, unable to verify of object is stale.");
+		}
+		if (currentValueLong == null || thisVersion == null) {
+			log.warn("Can not determine if object is stale, currentVersion="
+					+ currentValueLong + ";thisVersion=" + thisVersion
+					+ ". Returning not stale.");
+			return false;
 		}
 		return currentValueLong > thisVersion;
 	}
