@@ -23,6 +23,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import se.spagettikod.optimist.LockedByAnotherUserException;
+
+import com.mysql.jdbc.exceptions.jdbc4.MySQLTransactionRollbackException;
 
 /**
  * @author Roland Bali
@@ -50,6 +53,8 @@ public class MySqlMapper extends Mapper {
 			} else {
 				return null;
 			}
+		} catch (MySQLTransactionRollbackException e) {
+			throw new LockedByAnotherUserException();
 		} finally {
 			if (stmt != null && !stmt.isClosed()) {
 				stmt.close();
