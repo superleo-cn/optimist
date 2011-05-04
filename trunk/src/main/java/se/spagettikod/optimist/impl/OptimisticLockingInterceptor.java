@@ -19,6 +19,7 @@
 package se.spagettikod.optimist.impl;
 
 import java.sql.Connection;
+import java.sql.SQLTransactionRollbackException;
 import java.util.Properties;
 
 import org.apache.ibatis.executor.Executor;
@@ -32,6 +33,7 @@ import org.apache.ibatis.plugin.Signature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import se.spagettikod.optimist.LockedByAnotherUserException;
 import se.spagettikod.optimist.ModifiedByAnotherUserException;
 import se.spagettikod.optimist.OptimisticLocking;
 import se.spagettikod.optimist.RemovedByAnotherUserException;
@@ -64,25 +66,29 @@ public class OptimisticLockingInterceptor implements Interceptor {
 		//
 		// Retrieve the version currently in the database.
 		//
-		Object currentEntityVersion = mapper.getCurrentEntityVersionInDatabase(
-				connection, entityWrapper);
-
-		if (currentEntityVersion == null) {
-			//
-			// If current version can not be found entity has been
-			// removed by another user.
-			//
-			throw new RemovedByAnotherUserException();
-		} else {
-			//
-			// Check if version being saved is stale. If it is it
-			// has been modified by another user.
-			//
-			if (entityWrapper.isStale(currentEntityVersion)) {
-				throw new ModifiedByAnotherUserException();
+		try {
+			Object currentEntityVersion = mapper
+					.getCurrentEntityVersionInDatabase(connection,
+							entityWrapper);
+			if (currentEntityVersion == null) {
+				//
+				// If current version can not be found entity has been
+				// removed by another user.
+				//
+				throw new RemovedByAnotherUserException();
 			} else {
-				entityWrapper.incrementVersion();
+				//
+				// Check if version being saved is stale. If it is it
+				// has been modified by another user.
+				//
+				if (entityWrapper.isStale(currentEntityVersion)) {
+					throw new ModifiedByAnotherUserException();
+				} else {
+					entityWrapper.incrementVersion();
+				}
 			}
+		} catch (SQLTransactionRollbackException e) {
+			throw new LockedByAnotherUserException();
 		}
 	}
 
@@ -91,21 +97,26 @@ public class OptimisticLockingInterceptor implements Interceptor {
 		//
 		// Retrieve the version currently in the database.
 		//
-		Object currentEntityVersion = mapper.getCurrentEntityVersionInDatabase(
-				connection, entityWrapper);
-		//
-		// If current version can not be found entity has been
-		// removed by another user.
-		//
-		if (currentEntityVersion == null) {
-			throw new RemovedByAnotherUserException();
-		}
-		//
-		// If version being saved is stale. If it is it has been modified by
-		// another user.
-		//
-		else if (entityWrapper.isStale(currentEntityVersion)) {
-			throw new ModifiedByAnotherUserException();
+		try {
+			Object currentEntityVersion = mapper
+					.getCurrentEntityVersionInDatabase(connection,
+							entityWrapper);
+			//
+			// If current version can not be found entity has been
+			// removed by another user.
+			//
+			if (currentEntityVersion == null) {
+				throw new RemovedByAnotherUserException();
+			}
+			//
+			// If version being saved is stale. If it is it has been modified by
+			// another user.
+			//
+			else if (entityWrapper.isStale(currentEntityVersion)) {
+				throw new ModifiedByAnotherUserException();
+			}
+		} catch (SQLTransactionRollbackException e) {
+			throw new LockedByAnotherUserException();
 		}
 	}
 
