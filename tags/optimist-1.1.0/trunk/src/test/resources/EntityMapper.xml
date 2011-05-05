@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="se.spagettikod.optimist.testutil.mockups.EntityMapper">
+	<resultMap type="se.spagettikod.optimist.testutil.mockups.Entity" id="entityMap">
+		<result property="id" column="id" />
+		<result property="value" column="value" />
+		<result property="version" column="version" />
+	</resultMap>
+	
+	<select id="getById" resultMap="entityMap">
+		SELECT * FROM entity WHERE id = #{id}
+	</select>
+	
+	<insert id="insertEntity" parameterType="se.spagettikod.optimist.testutil.mockups.Entity"
+			useGeneratedKeys="true"	keyProperty="id">
+		INSERT INTO entity (
+			value,
+			version
+		) VALUES (
+			#{value},
+			#{version}
+		)
+	</insert>
+	
+	<update id="updateEntity" parameterType="se.spagettikod.optimist.testutil.mockups.Entity">
+		UPDATE entity SET
+			value = #{value},
+			version = #{version}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteEntity" parameterType="se.spagettikod.optimist.testutil.mockups.Entity">
+		DELETE FROM entity WHERE id = #{id}
+	</delete>
+	
+	<delete id="deleteAll">
+		DELETE FROM entity
+	</delete>
+</mapper>
