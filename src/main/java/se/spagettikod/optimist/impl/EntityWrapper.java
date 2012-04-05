@@ -74,7 +74,7 @@ public class EntityWrapper {
 		validateAndExtractAnnotations();
 	}
 
-	String getTableName() {
+	public String getTableName() {
 		return tableName;
 	}
 
@@ -82,7 +82,7 @@ public class EntityWrapper {
 		return identityColumnName;
 	}
 
-	String getVersionColumnName() {
+	public String getVersionColumnName() {
 		return versionColumnName;
 	}
 
@@ -193,7 +193,7 @@ public class EntityWrapper {
 		return null;
 	}
 
-	Object getIdentity() {
+	public Object getIdentity() {
 		boolean accessChanged = false;
 		if (!identityField.isAccessible()) {
 			identityField.setAccessible(true);

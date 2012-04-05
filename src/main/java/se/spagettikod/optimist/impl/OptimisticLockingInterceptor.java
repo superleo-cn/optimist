@@ -37,6 +37,7 @@ import se.spagettikod.optimist.LockedByAnotherUserException;
 import se.spagettikod.optimist.ModifiedByAnotherUserException;
 import se.spagettikod.optimist.OptimisticLocking;
 import se.spagettikod.optimist.RemovedByAnotherUserException;
+import se.spagettikod.optimist.impl.mapper.Mapper;
 
 /**
  * Plug in to intercept inserts, updates and deletes for objects implementing
@@ -130,7 +131,7 @@ public class OptimisticLockingInterceptor implements Interceptor {
 
 		if (mapper == null) {
 			log.info("Mapper not initialized, trying to find appropriate mapper using database metadata.");
-			mapper = Mapper.getMapper(connection);
+			mapper = MapResolver.getMapper(connection);
 		}
 
 		if (invocation.getArgs() != null && invocation.getArgs().length > 0
@@ -189,7 +190,7 @@ public class OptimisticLockingInterceptor implements Interceptor {
 		if (arg0 != null && arg0.getProperty("mapper") != null) {
 			log.info("Found mapper property, using class: "
 					+ arg0.getProperty("mapper"));
-			mapper = Mapper.getMapper(arg0.getProperty("mapper"));
+			mapper = MapResolver.getMapper(arg0.getProperty("mapper"));
 		}
 	}
 }
