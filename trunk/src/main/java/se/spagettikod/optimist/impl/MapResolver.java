@@ -24,15 +24,17 @@ import java.sql.SQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import se.spagettikod.optimist.impl.mapper.Mapper;
+import se.spagettikod.optimist.impl.mapper.MySqlMapper;
 
 /**
  * 
  * @author Roland Bali
  * 
  */
-public abstract class Mapper {
+public abstract class MapResolver {
 
-	private static Logger log = LoggerFactory.getLogger(Mapper.class);
+	private static Logger log = LoggerFactory.getLogger(MapResolver.class);
 
 	public abstract Object getCurrentEntityVersionInDatabase(
 			Connection connection, EntityWrapper entityWrapper)

@@ -16,7 +16,7 @@
  *
  */
 
-package se.spagettikod.optimist.impl;
+package se.spagettikod.optimist.impl.mapper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import se.spagettikod.optimist.LockedByAnotherUserException;
+import se.spagettikod.optimist.impl.EntityWrapper;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLTransactionRollbackException;
 
@@ -31,7 +32,7 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLTransactionRollbackException;
  * @author Roland Bali
  * 
  */
-public class MySqlMapper extends Mapper {
+public class MySqlMapper implements Mapper {
 
 	@Override
 	public Object getCurrentEntityVersionInDatabase(Connection connection,
@@ -60,6 +61,11 @@ public class MySqlMapper extends Mapper {
 				stmt.close();
 			}
 		}
+	}
+
+	@Override
+	public boolean isCompatible(Connection connection) {
+		return false;
 	}
 
 }
